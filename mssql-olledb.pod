@@ -1,0 +1,14 @@
+# $Header: /Perl/OlleDB/mssql-olledb.pod 2     05-11-13 16:33 Sommar $
+#
+
+=pod
+
+=head1 NAME
+
+MSSQL::OlleDB - Access SQL Server from Perl via OLE DB
+
+There is no POD documentation for this module. Please refer to
+mssql-olledb.html, which is in site\html\lib\MSSQL\OlleDB.html or
+under it's own name in the source directory for MSSQL::OlleDB.
+
+=cut

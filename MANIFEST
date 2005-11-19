@@ -1,0 +1,30 @@
+makefile.pl                            Makefile.pl for OlleDB.
+MANIFEST                               This file.
+README.html                            README file.
+mssql-olledb.pod                       Rudimentary POD for MSSQL::OlleDB.
+mssql-olledb.html                      The MSSQL::OlleDB manual.
+History.html                           History file for MSSQL::OlleDB.
+activeperl-copy.pl                     Installation file for ActivePerl.
+Tests.html                             Information on the OlleDB test suite.
+OlleDB.xs                              The XS part part of MSSQL::OlleDB
+OlleDB.pm                              The Perl part of MSSQL::OlleDB.
+t/1_resultsets.t                       Test of result styles and row styles
+t/2_datatypes.t                        Test of SQL Server data types.
+t/3_retvalues.t                        Test of return values from SPs and UDFs.
+t/4_conversion.t                       Test of sql_set_conversion.
+t/5_errors.t                           Test of error handling.
+t/6_paramsql.t                         Test of parameterised SQL statements.
+t/7_objectnames.t                      Testing resolution of object names.
+t/8_threads.t                          Test with Perl threads.
+t/9_loginproperties.t                  Test of login properties.
+t/A_rowsetprops.t                      Test of CommandTimeout and Query Notification.
+t/testsqllogin.pl                      Common login module for the test scripts.
+t/Helpers/Datetesthelper.exe           Help program to test DATETIME_REGIONAL.
+t/Helpers/Datehelp.bas                 Source code for datetesthelper.
+t/Helpers/Datetesthelper.vbp           Visual Basic project for datetesthelper.
+t/Helpers/assemblies.pl                Loads assemblies for CLR UDTs from binary strings.
+t/Helpers/udt_create.sql               SQL script to create the assemblies from DLLs.
+t/Helpers/complexinteger.cs            Source code for CLR UDT.
+t/Helpers/point.vb                     Source code for CLR UDT.
+t/Helpers/Utf8String.cs                Source code for CLR UDT.
+META.yml                               Module meta-data (added by MakeMaker)
