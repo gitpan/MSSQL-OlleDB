@@ -1,11 +1,16 @@
 #---------------------------------------------------------------------
-# $Header: /Perl/OlleDB/makefile.pl 7     05-11-19 21:26 Sommar $
+# $Header: /Perl/OlleDB/makefile.pl 8     05-11-20 19:31 Sommar $
 #
 # Makefile.pl for MSSQL::OlleDB. Note that you may need to specify where
 # you ave the include files for OLE DB.
 #
 # $History: makefile.pl $
 # 
+# *****************  Version 8  *****************
+# User: Sommar       Date: 05-11-20   Time: 19:31
+# Updated in $/Perl/OlleDB
+# Look for SQLNCLI.H on any disk. Use -P to Winzip for correct packaging.
+#
 # *****************  Version 7  *****************
 # User: Sommar       Date: 05-11-19   Time: 21:26
 # Updated in $/Perl/OlleDB
@@ -41,8 +46,6 @@
 
 use strict;
 
-my $SQLDIR;
-
 use ExtUtils::MakeMaker;
 
 # Run CL to see if we are running some version of the Visual C++ compiler.
@@ -62,10 +65,16 @@ elsif ($clversion < 13) {
    die  "No MAKEFILE generated.\n";
 }
 
-my $SQLDIR  = 'C:\Program Files\Microsoft SQL Server\90\SDK';
+my $SQLDIR  = '\Program Files\Microsoft SQL Server\90\SDK';
 my $sqlnclih = "$SQLDIR\\INCLUDE\\SQLNCLI.H";
-if (not -r $sqlnclih) {
-    warn "Can't read '$sqlnclih'..\n";
+foreach my $device ('C'..'Z') {
+   if (-r "$device:$sqlnclih") {
+      $SQLDIR = "$device:$SQLDIR";
+      last;
+   }
+}
+if ($SQLDIR !~ /^[C-Z]:/) {
+    warn "Can't find '$sqlnclih' on any disk.\n";
     warn 'Check setting of $SQLDIR in makefile.pl' . "\n";
     die  "No MAKEFILE generated.\n";
 }
@@ -80,7 +89,7 @@ WriteMakefile(
     'VERSION_FROM' => 'OlleDB.pm',
     'XS'           => { 'OlleDB.xs' => 'OlleDB.cpp' },
     'dist'         => {ZIP => '"E:\Program Files\Winzip\wzzip"',
-                       ZIPFLAGS => '-r -p'},
+                       ZIPFLAGS => '-r -P'},
     'dynamic_lib'  => { OTHERLDFLAGS => '/base:"0x19860000"'}
     # Set base address to avoid DLL collision, makes startup speedier. Remove
     # if your compiler don't have this option.
